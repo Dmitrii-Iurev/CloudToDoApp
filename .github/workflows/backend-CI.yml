@@ -1,0 +1,40 @@
+name: Backend
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm install
+        working-directory: backend  # pas aan als je backend in een andere map staat
+
+      # 5. Run unit tests en genereer coverage
+      - name: Run unit tests
+        run: npx jest --coverage --passWithNoTests
+        working-directory: backend
+
+      # 5. Upload coverage report to GitHub Actions
+      - name: Code Coverage Report
+        uses: mridang/action-test-reporter@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-file: ./backend/coverage/lcov.info
+          working-directory: ./
