@@ -39,11 +39,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 6. Build and push Docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./backend/Dockerfile   # eventueel ./backend/Dockerfile als het een backend image is
+          context: ./backend       # alleen de backend-map
+          file: ./backend/Dockerfile
           push: true
-          tags: dmitriivdh/fe:latest
+          tags: dmitriivdh/be:latest   # en wijzig eventueel 'fe' naar 'be' voor duidelijkheid
