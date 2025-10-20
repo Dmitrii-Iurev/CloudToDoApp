@@ -45,4 +45,4 @@ jobs:
           context: ./backend       # alleen de backend-map
           file: ./backend/Dockerfile
           push: true
-          tags: dmitriivdh/be:latest   # en wijzig eventueel 'fe' naar 'be' voor duidelijkheid
+          tags: dmitrii0511iurev/be:latest   # en wijzig eventueel 'fe' naar 'be' voor duidelijkheid
