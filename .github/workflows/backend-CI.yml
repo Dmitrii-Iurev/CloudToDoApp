@@ -44,6 +44,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./frontend/Dockerfile   # eventueel ./backend/Dockerfile als het een backend image is
+          file: ./backend/Dockerfile   # eventueel ./backend/Dockerfile als het een backend image is
           push: true
-          tags: tibevdh/fe:latest
+          tags: dmitriivdh/fe:latest
